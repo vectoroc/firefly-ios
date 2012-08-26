@@ -12,5 +12,13 @@
 @interface FFObjectsListModel : NSObject
 
 @property(nonatomic, strong) NSMutableArray *objectsList;
+@property(nonatomic, assign) id delegate;
+
+@end
+
+
+@protocol FFObjectListModelDelegate <NSObject>
+
+-(void) objectsListModeldidDataRecive;
 
 @end

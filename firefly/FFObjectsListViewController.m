@@ -9,14 +9,16 @@
 #import "FFObjectsListViewController.h"
 #import "FFObjectsListModel.h"
 
-@interface FFObjectsListViewController ()
+@interface FFObjectsListViewController () <FFObjectListModelDelegate>
 
 @property (strong, nonatomic) FFObjectsListModel* dataSource;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation FFObjectsListViewController
 @synthesize dataSource;
+@synthesize tableView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,10 +35,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.dataSource = [FFObjectsListModel new];
+    self.dataSource.delegate = self;
 }
 
 - (void)viewDidUnload
 {
+    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     self.dataSource = nil;
@@ -121,6 +125,12 @@
  return YES;
  }
  */
+
+-(void)objectsListModeldidDataRecive
+{
+    [tableView reloadData];
+    NSLog(@"objectsListModeldidDataRecive / rows count: %d", [self.dataSource.objectsList count]);
+}
 
 
 @end

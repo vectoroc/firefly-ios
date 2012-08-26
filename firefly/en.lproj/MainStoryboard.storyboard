@@ -64,6 +64,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="FireFly.SPb" id="xY4-86-gcz"/>
+                    <connections>
+                        <outlet property="tableView" destination="mwK-lN-54z" id="I77-T4-bwZ"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="301" y="183"/>

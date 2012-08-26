@@ -35,6 +35,8 @@
                 
                 [self.objectsList addObject:ffobj];
                 
+                [self.delegate objectsListModeldidDataRecive];
+                
                 NSLog(@"list size: %d / last title: %@", [self.objectsList count], [ffobj title]);
             }];
             
