@@ -7,11 +7,9 @@
 //
 
 #import "FFObjectsListViewController.h"
-#import "FFObjectsListModel.h"
 
 @interface FFObjectsListViewController () <FFObjectListModelDelegate>
 
-@property (strong, nonatomic) FFObjectsListModel* dataSource;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -34,8 +32,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.dataSource = [FFObjectsListModel new];
-    self.dataSource.delegate = self;
+//    self.dataSource = [FFObjectsListModel new];
+//    self.dataSource.delegate = self;
 }
 
 - (void)viewDidUnload

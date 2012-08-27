@@ -7,12 +7,22 @@
 //
 
 #import "AppDelegate.h"
+#import "FFObjectsListViewController.h"
+#import "FFObjectsListModel.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    
     // Override point for customization after application launch.
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    FFObjectsListViewController *controller = (FFObjectsListViewController *)navigationController.topViewController;
+    controller.dataSource = [[FFObjectsListModel alloc] init];
+    controller.dataSource.delegate = controller;
+    
+    NSLog(@"didFinishLaunchingWithOptions");    
+    
     return YES;
 }
 							

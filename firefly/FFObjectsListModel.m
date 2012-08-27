@@ -33,18 +33,17 @@
                 
                 id ffobj = [[FFObjectModel alloc] initWithId:11 title:[obj valueForKey:@"title"] metier:[obj valueForKey:@"subtitle"] latlon:coord];
                 
-                [self.objectsList addObject:ffobj];
-                
-                [self.delegate objectsListModeldidDataRecive];
-                
-                NSLog(@"list size: %d / last title: %@", [self.objectsList count], [ffobj title]);
+                [self.objectsList addObject:ffobj];                
+//                NSLog(@"list size: %d / last title: %@", [self.objectsList count], [ffobj title]);
             }];
+            
+            [self.delegate objectsListModeldidDataRecive];
+            NSLog(@"JSON donwload finished");
             
         } failure:nil];
         
-        NSLog(@"before start");
         [operation start];
-        NSLog(@"after start");
+        NSLog(@"JSON download start");
     }
     
     return self;

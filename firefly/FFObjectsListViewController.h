@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FFObjectsListModel.h"
 
 @interface FFObjectsListViewController : UITableViewController
+
+@property (strong, nonatomic) FFObjectsListModel* dataSource;
 
 @end
