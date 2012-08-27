@@ -69,7 +69,10 @@
     
     cell.textLabel.text = object.title;
 	cell.detailTextLabel.text = object.metier;
-//    [cell.imageView setImageWithURL:[NSURL URLWithString:object.logo]];
+    [cell.imageView setImageWithURL:[NSURL URLWithString:object.logo] placeholderImage:cell.imageView.image];
+    
+    // TODO: do not call it every time / static flag ?
+    [[cell.imageView layer] setCornerRadius:4.0f];
 
     return cell;
 }

@@ -31,7 +31,9 @@
                 coord.latitude = [[obj valueForKeyPath:@"location.lat"] floatValue];
                 coord.longitude = [[obj valueForKeyPath:@"location.lon"] floatValue];
                 
-                id ffobj = [[FFObjectModel alloc] initWithId:11 title:[obj valueForKey:@"title"] metier:[obj valueForKey:@"subtitle"] latlon:coord];
+                FFObjectModel *ffobj = [[FFObjectModel alloc] initWithId:11 title:[obj valueForKey:@"title"] metier:[obj valueForKey:@"subtitle"] latlon:coord];
+                
+                ffobj.logo = [obj valueForKey:@"logo"];
                 
                 [self.objectsList addObject:ffobj];                
 //                NSLog(@"list size: %d / last title: %@", [self.objectsList count], [ffobj title]);
