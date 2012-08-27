@@ -10,16 +10,20 @@
 #import "FFObjectsListViewController.h"
 #import "FFObjectsListModel.h"
 
+@interface AppDelegate ()
+@end
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
     // Override point for customization after application launch.
-    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    FFObjectsListViewController *controller = (FFObjectsListViewController *)navigationController.topViewController;
-    controller.dataSource = [[FFObjectsListModel alloc] init];
-    controller.dataSource.delegate = controller;
+    UITabBarController *tabBarController = (UITabBarController *) self.window.rootViewController;
+    UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
+    FFObjectsListViewController *objectsListViewController = [[navigationController viewControllers] objectAtIndex:0];
+    objectsListViewController.dataSource = [FFObjectsListModel new];
+    objectsListViewController.dataSource.delegate = objectsListViewController;
     
     NSLog(@"didFinishLaunchingWithOptions");    
     

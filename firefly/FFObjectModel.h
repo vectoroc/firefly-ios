@@ -14,7 +14,7 @@
 @property (nonatomic, assign) NSInteger id;
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *metier;
-@property (nonatomic, strong) UIImage  *logo;
+@property (nonatomic, strong) NSString  *logo;
 @property (nonatomic) CLLocationCoordinate2D latlon;
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSString *phone;

@@ -10,10 +10,16 @@
 
 @interface FFObjectViewController ()
 
+@property (weak, nonatomic) IBOutlet UIImageView *logo;
+@property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UITextView *description;
 
 @end
 
 @implementation FFObjectViewController
+@synthesize logo;
+@synthesize title;
+@synthesize description;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,6 +38,9 @@
 
 - (void)viewDidUnload
 {
+    [self setLogo:nil];
+    [self setTitle:nil];
+    [self setDescription:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

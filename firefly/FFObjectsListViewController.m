@@ -9,14 +9,13 @@
 #import "FFObjectsListViewController.h"
 
 @interface FFObjectsListViewController () <FFObjectListModelDelegate>
-
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) IBOutlet UITableView *myTableView;
 
 @end
 
 @implementation FFObjectsListViewController
+@synthesize myTableView;
 @synthesize dataSource;
-@synthesize tableView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -38,10 +37,10 @@
 
 - (void)viewDidUnload
 {
-    [self setTableView:nil];
+    [self setDataSource:nil];
+    [self setMyTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    self.dataSource = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -65,22 +64,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";    
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"objectListCell"];    
     FFObjectModel *object = [self.dataSource.objectsList objectAtIndex:indexPath.row];
     
     cell.textLabel.text = object.title;
-    cell.imageView.image = object.logo;
-    cell.detailTextLabel.text = object.metier;
+	cell.detailTextLabel.text = object.metier;
+//    [cell.imageView setImageWithURL:[NSURL URLWithString:object.logo]];
+
     return cell;
 }
 
@@ -126,7 +116,7 @@
 
 -(void)objectsListModeldidDataRecive
 {
-    [tableView reloadData];
+    [self.myTableView reloadData];
     NSLog(@"objectsListModeldidDataRecive / rows count: %d", [self.dataSource.objectsList count]);
 }
 

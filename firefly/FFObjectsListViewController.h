@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FFObjectsListModel.h"
+#import "Libraries/AFNetworking/UIImageView+AFNetworking.h"
 
 @interface FFObjectsListViewController : UITableViewController
 
