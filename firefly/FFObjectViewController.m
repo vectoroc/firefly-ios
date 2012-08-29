@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logo;
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UITextView *description;
+@property (weak, nonatomic) IBOutlet UITableView *infoTable;
 
 @end
 
@@ -20,6 +21,7 @@
 @synthesize logo;
 @synthesize title;
 @synthesize description;
+@synthesize infoTable;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +36,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    
 }
 
 - (void)viewDidUnload
@@ -41,6 +45,7 @@
     [self setLogo:nil];
     [self setTitle:nil];
     [self setDescription:nil];
+    [self setInfoTable:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

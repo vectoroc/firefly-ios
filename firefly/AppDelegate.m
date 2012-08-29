@@ -22,8 +22,8 @@
     UITabBarController *tabBarController = (UITabBarController *) self.window.rootViewController;
     UINavigationController *navigationController = [[tabBarController viewControllers] objectAtIndex:0];
     FFObjectsListViewController *objectsListViewController = [[navigationController viewControllers] objectAtIndex:0];
-    objectsListViewController.dataSource = [FFObjectsListModel new];
-    objectsListViewController.dataSource.delegate = objectsListViewController;
+//    objectsListViewController.dataSource = [FFObjectsListModel new];
+//    objectsListViewController.dataSource.delegate = objectsListViewController;
     
     NSLog(@"didFinishLaunchingWithOptions");    
     

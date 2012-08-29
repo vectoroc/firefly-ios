@@ -15,5 +15,6 @@
 @interface FFObjectsListViewController : UITableViewController
 
 @property (strong, nonatomic) FFObjectsListModel* dataSource;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *indicator;
 
 @end

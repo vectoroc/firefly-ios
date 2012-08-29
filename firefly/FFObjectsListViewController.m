@@ -16,6 +16,7 @@
 @implementation FFObjectsListViewController
 @synthesize myTableView;
 @synthesize dataSource;
+@synthesize indicator;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,14 +32,17 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-//    self.dataSource = [FFObjectsListModel new];
-//    self.dataSource.delegate = self;
+    self.dataSource = [FFObjectsListModel new];
+    self.dataSource.delegate = self;
+    
+    [self.indicator startAnimating];
 }
 
 - (void)viewDidUnload
 {
     [self setDataSource:nil];
     [self setMyTableView:nil];
+    [self setIndicator:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -120,7 +124,18 @@
 -(void)objectsListModeldidDataRecive
 {
     [self.myTableView reloadData];
+    [self.indicator stopAnimating];
     NSLog(@"objectsListModeldidDataRecive / rows count: %d", [self.dataSource.objectsList count]);
+}
+
+#pragma mark - Segue methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([@"viewObjectDetails" isEqualToString:segue.identifier]) {
+        NSIndexPath *index = [self.tableView indexPathForCell:sender];
+        FFObjectModel *object = [self.dataSource.objectsList objectAtIndex:index.row];
+//        [[segue destinationViewController] setObjectId:object];        
+    }
 }
 
 

@@ -28,8 +28,8 @@
             [JSON enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
                 CLLocationCoordinate2D coord;
                 
-                coord.latitude = [[obj valueForKeyPath:@"location.lat"] floatValue];
-                coord.longitude = [[obj valueForKeyPath:@"location.lon"] floatValue];
+                coord.latitude = [[obj valueForKeyPath:@"location.latitude"] floatValue];
+                coord.longitude = [[obj valueForKeyPath:@"location.longitude"] floatValue];
                 
                 FFObjectModel *ffobj = [[FFObjectModel alloc] initWithId:11 title:[obj valueForKey:@"title"] metier:[obj valueForKey:@"subtitle"] latlon:coord];
                 
