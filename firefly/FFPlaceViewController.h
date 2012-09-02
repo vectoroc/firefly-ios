@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "FFPlaceModel.h"
 
-@interface FFObjectViewController : UIViewController
+@interface FFPlaceViewController : UIViewController
+
+@property (strong, nonatomic) FFPlaceModel* place;
 
 @end

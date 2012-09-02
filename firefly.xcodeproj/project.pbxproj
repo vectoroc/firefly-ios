@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4560466315E82787003AB3F4 /* FFObjectsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560466215E82787003AB3F4 /* FFObjectsListViewController.m */; };
-		4560467F15E83019003AB3F4 /* FFObjectsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560467E15E83019003AB3F4 /* FFObjectsListModel.m */; };
-		4560468215E83025003AB3F4 /* FFObjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560468115E83025003AB3F4 /* FFObjectModel.m */; };
+		4560466315E82787003AB3F4 /* FFPlacesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560466215E82787003AB3F4 /* FFPlacesListViewController.m */; };
+		4560467F15E83019003AB3F4 /* FFPlacesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560467E15E83019003AB3F4 /* FFPlacesListModel.m */; };
+		4560468215E83025003AB3F4 /* FFPlaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560468115E83025003AB3F4 /* FFPlaceModel.m */; };
 		4560472615EA79F9003AB3F4 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560471215EA79F9003AB3F4 /* AFHTTPClient.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4560472715EA79F9003AB3F4 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560471415EA79F9003AB3F4 /* AFHTTPRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4560472815EA79F9003AB3F4 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560471615EA79F9003AB3F4 /* AFImageRequestOperation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -22,10 +22,14 @@
 		4560472F15EA79F9003AB3F4 /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560472515EA79F9003AB3F4 /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4560473415EBF72E003AB3F4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4560473315EBF72E003AB3F4 /* Default.png */; };
 		4560473615EBF8BF003AB3F4 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 4560473515EBF8BF003AB3F4 /* icon.png */; };
-		4560473915EBFAF5003AB3F4 /* FFObjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560473815EBFAF5003AB3F4 /* FFObjectViewController.m */; };
+		4560473915EBFAF5003AB3F4 /* FFPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560473815EBFAF5003AB3F4 /* FFPlaceViewController.m */; };
 		4560473B15EC0A25003AB3F4 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4560473A15EC0A25003AB3F4 /* placeholder.png */; };
 		4560473D15EC21FD003AB3F4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560473C15EC21FD003AB3F4 /* MapKit.framework */; };
 		458DEE0415EC2FCE0004CABD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 458DEE0315EC2FCE0004CABD /* QuartzCore.framework */; };
+		458DEEA015F273380004CABD /* FFMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 458DEE9F15F273370004CABD /* FFMapViewController.m */; };
+		458DEEA215F2B2AE0004CABD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 458DEEA115F2B2AE0004CABD /* CoreLocation.framework */; };
+		458DEED215F371160004CABD /* MKMapView+ZoomToFitAnnotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 458DEED115F371160004CABD /* MKMapView+ZoomToFitAnnotations.m */; };
+		458DEED415F383810004CABD /* globe.png in Resources */ = {isa = PBXBuildFile; fileRef = 458DEED315F383810004CABD /* globe.png */; };
 		45E7E96615DFF0D800BCACA3 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E7E96515DFF0D800BCACA3 /* UIKit.framework */; };
 		45E7E96815DFF0D800BCACA3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E7E96715DFF0D800BCACA3 /* Foundation.framework */; };
 		45E7E96A15DFF0D800BCACA3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E7E96915DFF0D800BCACA3 /* CoreGraphics.framework */; };
@@ -37,12 +41,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4560466115E82787003AB3F4 /* FFObjectsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFObjectsListViewController.h; sourceTree = "<group>"; };
-		4560466215E82787003AB3F4 /* FFObjectsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFObjectsListViewController.m; sourceTree = "<group>"; };
-		4560467D15E83019003AB3F4 /* FFObjectsListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFObjectsListModel.h; sourceTree = "<group>"; };
-		4560467E15E83019003AB3F4 /* FFObjectsListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFObjectsListModel.m; sourceTree = "<group>"; };
-		4560468015E83025003AB3F4 /* FFObjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFObjectModel.h; sourceTree = "<group>"; };
-		4560468115E83025003AB3F4 /* FFObjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFObjectModel.m; sourceTree = "<group>"; };
+		4560466115E82787003AB3F4 /* FFPlacesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPlacesListViewController.h; sourceTree = "<group>"; };
+		4560466215E82787003AB3F4 /* FFPlacesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFPlacesListViewController.m; sourceTree = "<group>"; };
+		4560467D15E83019003AB3F4 /* FFPlacesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPlacesListModel.h; sourceTree = "<group>"; };
+		4560467E15E83019003AB3F4 /* FFPlacesListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFPlacesListModel.m; sourceTree = "<group>"; };
+		4560468015E83025003AB3F4 /* FFPlaceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPlaceModel.h; sourceTree = "<group>"; };
+		4560468115E83025003AB3F4 /* FFPlaceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFPlaceModel.m; sourceTree = "<group>"; };
 		4560471115EA79F9003AB3F4 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
 		4560471215EA79F9003AB3F4 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPClient.m; sourceTree = "<group>"; };
 		4560471315EA79F9003AB3F4 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -66,11 +70,17 @@
 		4560472515EA79F9003AB3F4 /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		4560473315EBF72E003AB3F4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		4560473515EBF8BF003AB3F4 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
-		4560473715EBFAF5003AB3F4 /* FFObjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFObjectViewController.h; path = firefly/FFObjectViewController.h; sourceTree = SOURCE_ROOT; };
-		4560473815EBFAF5003AB3F4 /* FFObjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFObjectViewController.m; path = firefly/FFObjectViewController.m; sourceTree = SOURCE_ROOT; };
+		4560473715EBFAF5003AB3F4 /* FFPlaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FFPlaceViewController.h; path = firefly/FFPlaceViewController.h; sourceTree = SOURCE_ROOT; };
+		4560473815EBFAF5003AB3F4 /* FFPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFPlaceViewController.m; path = firefly/FFPlaceViewController.m; sourceTree = SOURCE_ROOT; };
 		4560473A15EC0A25003AB3F4 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		4560473C15EC21FD003AB3F4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		458DEE0315EC2FCE0004CABD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		458DEE9E15F273370004CABD /* FFMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFMapViewController.h; sourceTree = "<group>"; };
+		458DEE9F15F273370004CABD /* FFMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFMapViewController.m; sourceTree = "<group>"; };
+		458DEEA115F2B2AE0004CABD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		458DEED015F371150004CABD /* MKMapView+ZoomToFitAnnotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomToFitAnnotations.h"; sourceTree = "<group>"; };
+		458DEED115F371160004CABD /* MKMapView+ZoomToFitAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomToFitAnnotations.m"; sourceTree = "<group>"; };
+		458DEED315F383810004CABD /* globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globe.png; sourceTree = "<group>"; };
 		45E7E96115DFF0D800BCACA3 /* firefly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firefly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E7E96515DFF0D800BCACA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		45E7E96715DFF0D800BCACA3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -91,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				458DEEA215F2B2AE0004CABD /* CoreLocation.framework in Frameworks */,
 				458DEE0415EC2FCE0004CABD /* QuartzCore.framework in Frameworks */,
 				4560473D15EC21FD003AB3F4 /* MapKit.framework in Frameworks */,
 				45E7E96615DFF0D800BCACA3 /* UIKit.framework in Frameworks */,
@@ -141,6 +152,7 @@
 		4560473215EBF72E003AB3F4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				458DEED315F383810004CABD /* globe.png */,
 				4560473A15EC0A25003AB3F4 /* placeholder.png */,
 				4560473515EBF8BF003AB3F4 /* icon.png */,
 				4560473315EBF72E003AB3F4 /* Default.png */,
@@ -151,7 +163,6 @@
 		45E7E95615DFF0D800BCACA3 = {
 			isa = PBXGroup;
 			children = (
-				458DEE0315EC2FCE0004CABD /* QuartzCore.framework */,
 				45E7E96B15DFF0D800BCACA3 /* firefly */,
 				45E7E96415DFF0D800BCACA3 /* Frameworks */,
 				45E7E96215DFF0D800BCACA3 /* Products */,
@@ -169,6 +180,8 @@
 		45E7E96415DFF0D800BCACA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				458DEEA115F2B2AE0004CABD /* CoreLocation.framework */,
+				458DEE0315EC2FCE0004CABD /* QuartzCore.framework */,
 				4560473C15EC21FD003AB3F4 /* MapKit.framework */,
 				45E7E96515DFF0D800BCACA3 /* UIKit.framework */,
 				45E7E96715DFF0D800BCACA3 /* Foundation.framework */,
@@ -185,14 +198,18 @@
 				45E7E97415DFF0D800BCACA3 /* AppDelegate.h */,
 				45E7E97515DFF0D800BCACA3 /* AppDelegate.m */,
 				45E7E97715DFF0D800BCACA3 /* MainStoryboard.storyboard */,
-				4560466115E82787003AB3F4 /* FFObjectsListViewController.h */,
-				4560466215E82787003AB3F4 /* FFObjectsListViewController.m */,
-				4560473715EBFAF5003AB3F4 /* FFObjectViewController.h */,
-				4560473815EBFAF5003AB3F4 /* FFObjectViewController.m */,
-				4560467D15E83019003AB3F4 /* FFObjectsListModel.h */,
-				4560467E15E83019003AB3F4 /* FFObjectsListModel.m */,
-				4560468015E83025003AB3F4 /* FFObjectModel.h */,
-				4560468115E83025003AB3F4 /* FFObjectModel.m */,
+				458DEED015F371150004CABD /* MKMapView+ZoomToFitAnnotations.h */,
+				458DEED115F371160004CABD /* MKMapView+ZoomToFitAnnotations.m */,
+				458DEE9E15F273370004CABD /* FFMapViewController.h */,
+				458DEE9F15F273370004CABD /* FFMapViewController.m */,
+				4560466115E82787003AB3F4 /* FFPlacesListViewController.h */,
+				4560466215E82787003AB3F4 /* FFPlacesListViewController.m */,
+				4560473715EBFAF5003AB3F4 /* FFPlaceViewController.h */,
+				4560473815EBFAF5003AB3F4 /* FFPlaceViewController.m */,
+				4560467D15E83019003AB3F4 /* FFPlacesListModel.h */,
+				4560467E15E83019003AB3F4 /* FFPlacesListModel.m */,
+				4560468015E83025003AB3F4 /* FFPlaceModel.h */,
+				4560468115E83025003AB3F4 /* FFPlaceModel.m */,
 				45E7E97A15DFF0D800BCACA3 /* ViewController.h */,
 				45E7E97B15DFF0D800BCACA3 /* ViewController.m */,
 				45E7E96C15DFF0D800BCACA3 /* Supporting Files */,
@@ -267,6 +284,7 @@
 				4560473415EBF72E003AB3F4 /* Default.png in Resources */,
 				4560473615EBF8BF003AB3F4 /* icon.png in Resources */,
 				4560473B15EC0A25003AB3F4 /* placeholder.png in Resources */,
+				458DEED415F383810004CABD /* globe.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,9 +298,9 @@
 				45E7E97215DFF0D800BCACA3 /* main.m in Sources */,
 				45E7E97615DFF0D800BCACA3 /* AppDelegate.m in Sources */,
 				45E7E97C15DFF0D800BCACA3 /* ViewController.m in Sources */,
-				4560466315E82787003AB3F4 /* FFObjectsListViewController.m in Sources */,
-				4560467F15E83019003AB3F4 /* FFObjectsListModel.m in Sources */,
-				4560468215E83025003AB3F4 /* FFObjectModel.m in Sources */,
+				4560466315E82787003AB3F4 /* FFPlacesListViewController.m in Sources */,
+				4560467F15E83019003AB3F4 /* FFPlacesListModel.m in Sources */,
+				4560468215E83025003AB3F4 /* FFPlaceModel.m in Sources */,
 				4560472615EA79F9003AB3F4 /* AFHTTPClient.m in Sources */,
 				4560472715EA79F9003AB3F4 /* AFHTTPRequestOperation.m in Sources */,
 				4560472815EA79F9003AB3F4 /* AFImageRequestOperation.m in Sources */,
@@ -293,7 +311,9 @@
 				4560472D15EA79F9003AB3F4 /* AFURLConnectionOperation.m in Sources */,
 				4560472E15EA79F9003AB3F4 /* AFXMLRequestOperation.m in Sources */,
 				4560472F15EA79F9003AB3F4 /* UIImageView+AFNetworking.m in Sources */,
-				4560473915EBFAF5003AB3F4 /* FFObjectViewController.m in Sources */,
+				4560473915EBFAF5003AB3F4 /* FFPlaceViewController.m in Sources */,
+				458DEEA015F273380004CABD /* FFMapViewController.m in Sources */,
+				458DEED215F371160004CABD /* MKMapView+ZoomToFitAnnotations.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

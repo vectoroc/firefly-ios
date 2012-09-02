@@ -6,17 +6,26 @@
 //  Copyright (c) 2012 Victor Grigoriev. All rights reserved.
 //
 
-#import "FFObjectsListViewController.h"
+#import "FFPlacesListViewController.h"
+#import "FFPlaceViewController.h"
+#import "Libraries/AFNetworking/AFNetworking.h"
+#import "Libraries/AFNetworking/UIImageView+AFNetworking.h"
 
-@interface FFObjectsListViewController () <FFObjectListModelDelegate>
+#import <CoreLocation/CoreLocation.h>
+
+@interface FFPlacesListViewController () <FFPlacesListModelDelegate, CLLocationManagerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
+
+@property (strong, nonatomic) CLLocationManager* locationManager;
 
 @end
 
-@implementation FFObjectsListViewController
+@implementation FFPlacesListViewController {
+    NSMutableArray* _deletedRows;
+}
+
 @synthesize myTableView;
 @synthesize dataSource;
-@synthesize indicator;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -24,7 +33,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NSLog(@"List->initWithNibName");
     }
+    return self;
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    NSLog(@"List->initWithCoder");
     return self;
 }
 
@@ -32,19 +49,39 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.dataSource = [FFObjectsListModel new];
+    self.dataSource = [FFPlacesListModel sharedInstance];
     self.dataSource.delegate = self;
     
-    [self.indicator startAnimating];
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    [self.locationManager setDelegate:self];
+    [self.locationManager setPurpose:@"Obtain current location to sort results"];
+    [self.locationManager startMonitoringSignificantLocationChanges];
+        
+//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
+    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
+    
+    NSLog(@"List->viewDidLoad");
+    
+    self->_deletedRows = [[NSMutableArray alloc] init];
 }
+
 
 - (void)viewDidUnload
 {
     [self setDataSource:nil];
     [self setMyTableView:nil];
-    [self setIndicator:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    
+    self->_deletedRows = nil;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@"List->viewDidApear");
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -62,14 +99,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"numberOfRowsInSection: %d", [self.dataSource.objectsList count]);
-    return [self.dataSource.objectsList count];
+    NSLog(@"numberOfRowsInSection: %d, deleted: %d", [self.dataSource.places count], [self->_deletedRows count]);
+    return [self.dataSource.places count] - [self->_deletedRows count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"objectListCell"];    
-    FFObjectModel *object = [self.dataSource.objectsList objectAtIndex:indexPath.row];
+    FFPlaceModel *object = [self.dataSource.places objectAtIndex:indexPath.row];
     
     cell.textLabel.text = object.title;
 	cell.detailTextLabel.text = object.metier;
@@ -96,7 +133,7 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [self.dataSource.objectsList removeObjectAtIndex:indexPath.row];
+        [self.dataSource.places removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -123,19 +160,50 @@
 
 -(void)objectsListModeldidDataRecive
 {
+    CLLocation *location = [self.locationManager location];
+    if (location) {
+        [self.dataSource sortByLocation:location];
+    }
+    
     [self.myTableView reloadData];
-    [self.indicator stopAnimating];
-    NSLog(@"objectsListModeldidDataRecive / rows count: %d", [self.dataSource.objectsList count]);
+//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+
+    NSLog(@"objectsListModeldidDataRecive / rows count: %d", [self.dataSource.places count]);
 }
 
 #pragma mark - Segue methods
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([@"viewObjectDetails" isEqualToString:segue.identifier]) {
+    if ([@"placeViewDetails" isEqualToString:segue.identifier]) {
         NSIndexPath *index = [self.tableView indexPathForCell:sender];
-        FFObjectModel *object = [self.dataSource.objectsList objectAtIndex:index.row];
-//        [[segue destinationViewController] setObjectId:object];        
+        FFPlaceModel *place = [self.dataSource.places objectAtIndex:index.row];
+        [[segue destinationViewController] setPlace:place];
     }
+}
+
+- (IBAction)selectMap:(UISegmentedControl*)sender {
+    NSLog(@"selected segment %d", sender.selectedSegmentIndex);
+    if (sender.selectedSegmentIndex == 1) {
+        [self->_deletedRows addObject:[NSNumber numberWithInt:2]];
+        [self->_deletedRows addObject:[NSNumber numberWithInt:4]];
+        
+        NSArray *paths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], [NSIndexPath indexPathForRow:4 inSection:0], nil];
+
+        [self.myTableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
+    else {
+    }
+}
+
+#pragma Location events
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"New location %@", newLocation);
+
 }
 
 
