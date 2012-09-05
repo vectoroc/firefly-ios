@@ -35,11 +35,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    if (![self.places count]) {
-        self.places = [FFPlacesListModel sharedInstance].places;
-        self.selectedIndex = 0;
-    }
-    
     if (self.selectedIndex) {
         [self.mapView addAnnotation:[self.places objectAtIndex:self.selectedIndex]];
     }

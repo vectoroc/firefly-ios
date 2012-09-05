@@ -9,19 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "FFPlaceModel.h"
 
-@protocol FFPlacesListModelDelegate <NSObject>
-
--(void)objectsListModeldidDataRecive;
-
-@end
-
-
 @interface FFPlacesListModel : NSObject
 
 @property(nonatomic, strong) NSMutableArray *places;
-@property(nonatomic, assign) id delegate;
 
-+(FFPlacesListModel*) sharedInstance;
+-(FFPlacesListModel*)initWithObject:(id)data;
 -(void)sortByLocation:(CLLocation*)location;
 
 @end

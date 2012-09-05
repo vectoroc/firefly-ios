@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Victor Grigoriev. All rights reserved.
 //
 
+#import "FFDownloadManager.h"
 #import "FFPlacesListViewController.h"
 #import "FFPlaceViewController.h"
 #import "Libraries/AFNetworking/AFNetworking.h"
@@ -13,58 +14,34 @@
 
 #import <CoreLocation/CoreLocation.h>
 
-@interface FFPlacesListViewController () <FFPlacesListModelDelegate, CLLocationManagerDelegate>
-@property (strong, nonatomic) IBOutlet UITableView *myTableView;
+@interface FFPlacesListViewController () <CLLocationManagerDelegate>
 
+@property (strong, nonatomic) IBOutlet UITableView *myTableView;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager* locationManager;
 
 @end
 
-@implementation FFPlacesListViewController {
-    NSMutableArray* _deletedRows;
-}
+@implementation FFPlacesListViewController
 
-@synthesize myTableView;
-@synthesize dataSource;
-
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        NSLog(@"List->initWithNibName");
-    }
-    return self;
-}
-
--(id)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    NSLog(@"List->initWithCoder");
-    return self;
-}
+//@synthesize myTableView;
+//@synthesize dataSource;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.dataSource = [FFPlacesListModel sharedInstance];
-    self.dataSource.delegate = self;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notificationHandler:) name:kFFDownloadManagerNotificationPlacesData object:nil];
     
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
     [self.locationManager setDelegate:self];
     [self.locationManager setPurpose:@"Obtain current location to sort results"];
     [self.locationManager startMonitoringSignificantLocationChanges];
-        
-//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-    [[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
-    [[AFNetworkActivityIndicatorManager sharedManager] incrementActivityCount];
-    
-    NSLog(@"List->viewDidLoad");
-    
-    self->_deletedRows = [[NSMutableArray alloc] init];
+
+    if (!self.dataSource) {
+        [[FFDownloadManager sharedInstance] requestPlacesDataWithCategory:self.category andCoordinates:self.locationManager.location.coordinate];
+    }
 }
 
 
@@ -74,15 +51,8 @@
     [self setMyTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
-    
-    self->_deletedRows = nil;
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    NSLog(@"List->viewDidApear");
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -99,8 +69,8 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"numberOfRowsInSection: %d, deleted: %d", [self.dataSource.places count], [self->_deletedRows count]);
-    return [self.dataSource.places count] - [self->_deletedRows count];
+    NSLog(@"count:%d", [self.dataSource.places count]);
+    return [self.dataSource.places count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -158,19 +128,6 @@
  }
  */
 
--(void)objectsListModeldidDataRecive
-{
-    CLLocation *location = [self.locationManager location];
-    if (location) {
-        [self.dataSource sortByLocation:location];
-    }
-    
-    [self.myTableView reloadData];
-//    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
-
-    NSLog(@"objectsListModeldidDataRecive / rows count: %d", [self.dataSource.places count]);
-}
 
 #pragma mark - Segue methods
 
@@ -185,8 +142,8 @@
 - (IBAction)selectMap:(UISegmentedControl*)sender {
     NSLog(@"selected segment %d", sender.selectedSegmentIndex);
     if (sender.selectedSegmentIndex == 1) {
-        [self->_deletedRows addObject:[NSNumber numberWithInt:2]];
-        [self->_deletedRows addObject:[NSNumber numberWithInt:4]];
+//        [self->_deletedRows addObject:[NSNumber numberWithInt:2]];
+//        [self->_deletedRows addObject:[NSNumber numberWithInt:4]];
         
         NSArray *paths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], [NSIndexPath indexPathForRow:4 inSection:0], nil];
 
@@ -204,6 +161,15 @@
 {
     NSLog(@"New location %@", newLocation);
 
+}
+
+-(void)notificationHandler:(NSNotification*)notification
+{
+    if ([notification.name isEqualToString:kFFDownloadManagerNotificationPlacesData]) {
+        NSLog(@"%@:%@", notification.name, notification.object);
+        self.dataSource = [[FFPlacesListModel alloc] initWithObject:notification.object];
+        [self.myTableView reloadData];
+    }
 }
 
 

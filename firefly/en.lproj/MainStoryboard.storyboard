@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="ugX-wA-b2T">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2Q3-X2-f3h">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
@@ -11,7 +11,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sko-oC-H03" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="kbS-Lr-kKH" customClass="FFPlacesListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="mwK-lN-54z">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -73,7 +73,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1831" y="353"/>
+            <point key="canvasLocation" x="936" y="327"/>
         </scene>
         <!--Place View Controller-->
         <scene sceneID="Prj-OS-DTy">
@@ -81,11 +81,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BBY-jY-wIq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="WvX-ql-Dur" customClass="FFPlaceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="U27-Ml-tng">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="placeholder.png" id="hDO-kY-da4">
-                                <rect key="frame" x="20" y="20" width="110" height="110"/>
+                                <rect key="frame" x="20" y="20" width="110" height="159"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" text="description" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" id="oaN-RW-80n">
@@ -128,7 +128,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2264" y="849"/>
+            <point key="canvasLocation" x="1582" y="327"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="cdM-3e-7IG">
@@ -136,11 +136,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5q-6a-8UC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="PJW-h7-fsp" customClass="FFMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dCM-bK-TKa">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="73O-Rs-9aL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="PJW-h7-fsp" id="nMN-Uy-m4T"/>
@@ -155,60 +155,46 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2686" y="1010"/>
+            <point key="canvasLocation" x="2150" y="327"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="a3T-gc-qGi">
+        <!--View Controller-->
+        <scene sceneID="nS4-fh-28j">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bKl-y1-4Wt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="a0z-dJ-wsh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="search" id="weW-PY-qNr"/>
-                    <navigationItem key="navigationItem" id="26F-4C-zDK"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="a8E-5f-HDy">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="kbS-Lr-kKH" kind="relationship" relationship="rootViewController" id="7AE-KF-aCh"/>
-                    </connections>
-                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HVQ-kV-oPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="PHD-Jb-1ni" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hgq-3O-sZD">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
             </objects>
-            <point key="canvasLocation" x="1049" y="380"/>
+            <point key="canvasLocation" x="2150" y="922"/>
         </scene>
-        <!--Navigation Controller - Map-->
-        <scene sceneID="ojX-D7-8At">
+        <!--Catalog Controller - FireFly СПб-->
+        <scene sceneID="5qO-qW-JJE">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="orF-fW-ZW6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="m9P-hY-02A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" image="globe.png" id="LpQ-lK-5fY"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Gen-Ex-zFR">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1l3-li-kd5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="ni3-gm-vL0" customClass="FFCatalogController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IBy-b2-moJ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="047-s6-GHl">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="FireFly СПб" id="4ZY-Gg-wpN"/>
                     <connections>
-                        <segue destination="kbW-rD-A7S" kind="relationship" relationship="rootViewController" id="x1X-pv-0dk"/>
+                        <outlet property="scrollView" destination="047-s6-GHl" id="HLc-dU-tr1"/>
+                        <segue destination="kym-AW-gZB" kind="push" identifier="subcategory" id="fOR-bM-KNY"/>
                     </connections>
-                </navigationController>
+                </viewController>
             </objects>
-            <point key="canvasLocation" x="1059" y="950"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="hb4-te-EH0">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="TQD-KE-AEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tabBarController id="ugX-wA-b2T" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="T52-mr-d3X">
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="a0z-dJ-wsh" kind="relationship" relationship="viewControllers" id="gJG-6Q-H6K"/>
-                        <segue destination="m9P-hY-02A" kind="relationship" relationship="viewControllers" id="azW-Ad-00W"/>
-                    </connections>
-                </tabBarController>
-            </objects>
-            <point key="canvasLocation" x="469" y="578"/>
+            <point key="canvasLocation" x="-10" y="327"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="ae0-UJ-naY">
@@ -216,11 +202,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kem-bM-voR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="kbW-rD-A7S" customClass="FFMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jD6-BX-slB">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="UHh-Wf-ryL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="kbW-rD-A7S" id="wF5-sQ-Ghb"/>
@@ -236,42 +222,61 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1688" y="975"/>
+            <point key="canvasLocation" x="1021" y="1106"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Yis-Ie-RjT">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IEQ-k9-3gC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="2Q3-X2-f3h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZbI-af-vN7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ni3-gm-vL0" kind="relationship" relationship="rootViewController" id="LWw-Zd-ACI"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-520" y="327"/>
+        </scene>
+        <!--Catalog Controller-->
+        <scene sceneID="uSg-oU-FZ5">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ley-fv-RkT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="kym-AW-gZB" customClass="FFCatalogController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7NV-oP-fio">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="pf3-id-tgq">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RM4-LI-2b7"/>
+                    <connections>
+                        <outlet property="scrollView" destination="pf3-id-tgq" id="YnN-b7-bX5"/>
+                        <segue destination="kbS-Lr-kKH" kind="push" identifier="list" id="EvG-Tb-0N1"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="453" y="327"/>
         </scene>
     </scenes>
     <resources>
-        <image name="globe.png" width="26" height="26"/>
         <image name="placeholder.png" width="35" height="35"/>
     </resources>
-    <classes>
-        <class className="FFMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="FFPlaceViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlaceViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="description" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="logo" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="metier" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FFPlacesListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlacesListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4oX-Wd-ukf"/>
+        <segue reference="4Nj-og-tvh"/>
     </inferredMetricsTieBreakers>
 </document>

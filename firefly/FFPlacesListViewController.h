@@ -13,7 +13,7 @@
 
 @interface FFPlacesListViewController : UITableViewController
 
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (weak, nonatomic) FFPlacesListModel* dataSource;
+@property (assign, nonatomic) NSInteger category;
+@property (strong, nonatomic) FFPlacesListModel* dataSource;
 
 @end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		453FE0E615F6C34200F6CC9F /* FFDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 453FE0E515F6C34200F6CC9F /* FFDownloadManager.m */; };
 		4560466315E82787003AB3F4 /* FFPlacesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560466215E82787003AB3F4 /* FFPlacesListViewController.m */; };
 		4560467F15E83019003AB3F4 /* FFPlacesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560467E15E83019003AB3F4 /* FFPlacesListModel.m */; };
 		4560468215E83025003AB3F4 /* FFPlaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560468115E83025003AB3F4 /* FFPlaceModel.m */; };
@@ -25,6 +26,9 @@
 		4560473915EBFAF5003AB3F4 /* FFPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560473815EBFAF5003AB3F4 /* FFPlaceViewController.m */; };
 		4560473B15EC0A25003AB3F4 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4560473A15EC0A25003AB3F4 /* placeholder.png */; };
 		4560473D15EC21FD003AB3F4 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4560473C15EC21FD003AB3F4 /* MapKit.framework */; };
+		4574AEC415F40646005AD9CD /* FFCatalogController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4574AEC315F40646005AD9CD /* FFCatalogController.m */; };
+		4574AED315F538C0005AD9CD /* FFCatalogModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4574AED215F538C0005AD9CD /* FFCatalogModel.m */; };
+		4574AF1115F69DD1005AD9CD /* UIButton+bgImageByURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 4574AF1015F69DD1005AD9CD /* UIButton+bgImageByURL.m */; };
 		458DEE0415EC2FCE0004CABD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 458DEE0315EC2FCE0004CABD /* QuartzCore.framework */; };
 		458DEEA015F273380004CABD /* FFMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 458DEE9F15F273370004CABD /* FFMapViewController.m */; };
 		458DEEA215F2B2AE0004CABD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 458DEEA115F2B2AE0004CABD /* CoreLocation.framework */; };
@@ -41,6 +45,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		453FE0E415F6C34200F6CC9F /* FFDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFDownloadManager.h; sourceTree = "<group>"; };
+		453FE0E515F6C34200F6CC9F /* FFDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFDownloadManager.m; sourceTree = "<group>"; };
 		4560466115E82787003AB3F4 /* FFPlacesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPlacesListViewController.h; sourceTree = "<group>"; };
 		4560466215E82787003AB3F4 /* FFPlacesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFPlacesListViewController.m; sourceTree = "<group>"; };
 		4560467D15E83019003AB3F4 /* FFPlacesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPlacesListModel.h; sourceTree = "<group>"; };
@@ -74,12 +80,18 @@
 		4560473815EBFAF5003AB3F4 /* FFPlaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FFPlaceViewController.m; path = firefly/FFPlaceViewController.m; sourceTree = SOURCE_ROOT; };
 		4560473A15EC0A25003AB3F4 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		4560473C15EC21FD003AB3F4 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		4574AEC215F40646005AD9CD /* FFCatalogController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFCatalogController.h; sourceTree = "<group>"; };
+		4574AEC315F40646005AD9CD /* FFCatalogController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFCatalogController.m; sourceTree = "<group>"; };
+		4574AED115F538C0005AD9CD /* FFCatalogModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFCatalogModel.h; sourceTree = "<group>"; };
+		4574AED215F538C0005AD9CD /* FFCatalogModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFCatalogModel.m; sourceTree = "<group>"; };
+		4574AF0F15F69DD0005AD9CD /* UIButton+bgImageByURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+bgImageByURL.h"; path = "Categories/UIButton+bgImageByURL.h"; sourceTree = "<group>"; };
+		4574AF1015F69DD1005AD9CD /* UIButton+bgImageByURL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+bgImageByURL.m"; path = "Categories/UIButton+bgImageByURL.m"; sourceTree = "<group>"; };
 		458DEE0315EC2FCE0004CABD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		458DEE9E15F273370004CABD /* FFMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFMapViewController.h; sourceTree = "<group>"; };
 		458DEE9F15F273370004CABD /* FFMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFMapViewController.m; sourceTree = "<group>"; };
 		458DEEA115F2B2AE0004CABD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		458DEED015F371150004CABD /* MKMapView+ZoomToFitAnnotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKMapView+ZoomToFitAnnotations.h"; sourceTree = "<group>"; };
-		458DEED115F371160004CABD /* MKMapView+ZoomToFitAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKMapView+ZoomToFitAnnotations.m"; sourceTree = "<group>"; };
+		458DEED015F371150004CABD /* MKMapView+ZoomToFitAnnotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+ZoomToFitAnnotations.h"; path = "Categories/MKMapView+ZoomToFitAnnotations.h"; sourceTree = "<group>"; };
+		458DEED115F371160004CABD /* MKMapView+ZoomToFitAnnotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+ZoomToFitAnnotations.m"; path = "Categories/MKMapView+ZoomToFitAnnotations.m"; sourceTree = "<group>"; };
 		458DEED315F383810004CABD /* globe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = globe.png; sourceTree = "<group>"; };
 		45E7E96115DFF0D800BCACA3 /* firefly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = firefly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E7E96515DFF0D800BCACA3 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -160,6 +172,17 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		4574AF1215F69DFB005AD9CD /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				458DEED015F371150004CABD /* MKMapView+ZoomToFitAnnotations.h */,
+				458DEED115F371160004CABD /* MKMapView+ZoomToFitAnnotations.m */,
+				4574AF0F15F69DD0005AD9CD /* UIButton+bgImageByURL.h */,
+				4574AF1015F69DD1005AD9CD /* UIButton+bgImageByURL.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		45E7E95615DFF0D800BCACA3 = {
 			isa = PBXGroup;
 			children = (
@@ -193,17 +216,22 @@
 		45E7E96B15DFF0D800BCACA3 /* firefly */ = {
 			isa = PBXGroup;
 			children = (
+				4574AF1215F69DFB005AD9CD /* Categories */,
 				4560473215EBF72E003AB3F4 /* Resources */,
 				4560470F15EA79F9003AB3F4 /* Libraries */,
 				45E7E97415DFF0D800BCACA3 /* AppDelegate.h */,
 				45E7E97515DFF0D800BCACA3 /* AppDelegate.m */,
 				45E7E97715DFF0D800BCACA3 /* MainStoryboard.storyboard */,
-				458DEED015F371150004CABD /* MKMapView+ZoomToFitAnnotations.h */,
-				458DEED115F371160004CABD /* MKMapView+ZoomToFitAnnotations.m */,
+				4574AED115F538C0005AD9CD /* FFCatalogModel.h */,
+				4574AED215F538C0005AD9CD /* FFCatalogModel.m */,
+				4574AEC215F40646005AD9CD /* FFCatalogController.h */,
+				4574AEC315F40646005AD9CD /* FFCatalogController.m */,
 				458DEE9E15F273370004CABD /* FFMapViewController.h */,
 				458DEE9F15F273370004CABD /* FFMapViewController.m */,
 				4560466115E82787003AB3F4 /* FFPlacesListViewController.h */,
 				4560466215E82787003AB3F4 /* FFPlacesListViewController.m */,
+				453FE0E415F6C34200F6CC9F /* FFDownloadManager.h */,
+				453FE0E515F6C34200F6CC9F /* FFDownloadManager.m */,
 				4560473715EBFAF5003AB3F4 /* FFPlaceViewController.h */,
 				4560473815EBFAF5003AB3F4 /* FFPlaceViewController.m */,
 				4560467D15E83019003AB3F4 /* FFPlacesListModel.h */,
@@ -314,6 +342,10 @@
 				4560473915EBFAF5003AB3F4 /* FFPlaceViewController.m in Sources */,
 				458DEEA015F273380004CABD /* FFMapViewController.m in Sources */,
 				458DEED215F371160004CABD /* MKMapView+ZoomToFitAnnotations.m in Sources */,
+				4574AEC415F40646005AD9CD /* FFCatalogController.m in Sources */,
+				4574AED315F538C0005AD9CD /* FFCatalogModel.m in Sources */,
+				4574AF1115F69DD1005AD9CD /* UIButton+bgImageByURL.m in Sources */,
+				453FE0E615F6C34200F6CC9F /* FFDownloadManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

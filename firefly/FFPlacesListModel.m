@@ -11,64 +11,46 @@
 
 @implementation FFPlacesListModel
 
-@synthesize places=_objectsList;
-
 -(id)init
 {
     self = [super init];
-    if (self)
-    {
-        self.places = [[NSMutableArray alloc] init];
-                
-        NSURL *url = [NSURL URLWithString:@"http://webmanager.dev/iphone-client"];
-        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-        
-        AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-            [JSON enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                FFPlaceModel *place = [[FFPlaceModel alloc] init];
-                
-                place.id = [[obj valueForKey:@"id"] integerValue];
-                place.title = [obj valueForKey:@"title"];
-                place.metier = [obj valueForKey:@"metier"];
-                place.description = [obj valueForKey:@"description"];
-                place.address = [obj valueForKey:@"address"];
-                place.phone = [obj valueForKey:@"phone"];
-                place.site = [obj valueForKey:@"site"];
-                place.email = [obj valueForKey:@"email"];
-                place.discount = [obj valueForKey:@"discount"];
-                place.openHours = [obj valueForKey:@"openhours"];
-                place.logo = [obj valueForKey:@"logo"];
-                place.photos = [obj valueForKey:@"photos"];
-                
-                
-                CLLocationDegrees lat = [[obj valueForKeyPath:@"location.latitude"] floatValue];
-                CLLocationDegrees lon = [[obj valueForKeyPath:@"location.longitude"] floatValue];
-                place.location = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
-                
-                [self.places addObject:place];
-            }];
+    if (self) {
+        self.places = [NSMutableArray new];
+    }
+    return self;
+}
+
+-(FFPlacesListModel*)initWithObject:(id)data
+{
+    self = [self init];
+    if (self) {
+        [data enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            FFPlaceModel *place = [[FFPlaceModel alloc] init];
             
-            [self.delegate objectsListModeldidDataRecive];
-            NSLog(@"JSON donwload finished");
+            place.id = [[obj valueForKey:@"id"] integerValue];
+            place.title = [obj valueForKey:@"title"];
+            place.metier = [obj valueForKey:@"metier"];
+            place.description = [obj valueForKey:@"description"];
+            place.address = [obj valueForKey:@"address"];
+            place.phone = [obj valueForKey:@"phone"];
+            place.site = [obj valueForKey:@"site"];
+            place.email = [obj valueForKey:@"email"];
+            place.discount = [obj valueForKey:@"discount"];
+            place.openHours = [obj valueForKey:@"openhours"];
+            place.logo = [obj valueForKey:@"logo"];
+            place.photos = [obj valueForKey:@"photos"];
             
-        } failure:nil];
-        
-        [operation start];
-        NSLog(@"JSON download start");
+            CLLocationDegrees lat = [[obj valueForKeyPath:@"location.latitude"] floatValue];
+            CLLocationDegrees lon = [[obj valueForKeyPath:@"location.longitude"] floatValue];
+            place.location = [[CLLocation alloc] initWithLatitude:lat longitude:lon];
+            
+            [self.places addObject:place];
+        }];        
     }
     
     return self;
 }
 
-
-+(FFPlacesListModel*) sharedInstance
-{
-    static id _instance;
-    if (!_instance) {
-        _instance = [[FFPlacesListModel alloc] init];
-    }    
-    return _instance;
-}
 
 -(void) sortByLocation:(CLLocation*)location
 {
