@@ -20,6 +20,8 @@
     return self;
 }
 
+#define VAL4KEY(obj, key) ([obj valueForKey:key] != [NSNull null] ? [obj valueForKey:key] : nil);
+
 -(FFPlacesListModel*)initWithObject:(id)data
 {
     self = [self init];
@@ -28,17 +30,18 @@
             FFPlaceModel *place = [[FFPlaceModel alloc] init];
             
             place.id = [[obj valueForKey:@"id"] integerValue];
-            place.title = [obj valueForKey:@"title"];
-            place.metier = [obj valueForKey:@"metier"];
-            place.description = [obj valueForKey:@"description"];
-            place.address = [obj valueForKey:@"address"];
-            place.phone = [obj valueForKey:@"phone"];
-            place.site = [obj valueForKey:@"site"];
-            place.email = [obj valueForKey:@"email"];
-            place.discount = [obj valueForKey:@"discount"];
-            place.openHours = [obj valueForKey:@"openhours"];
-            place.logo = [obj valueForKey:@"logo"];
-            place.photos = [obj valueForKey:@"photos"];
+            place.title = VAL4KEY(obj, @"title");
+            place.metier = VAL4KEY(obj, @"metier");
+            place.description = VAL4KEY(obj, @"description");
+            place.address = VAL4KEY(obj, @"address");
+            place.phone = VAL4KEY(obj, @"phone");
+            place.site = VAL4KEY(obj, @"site");
+            place.email = VAL4KEY(obj, @"email");
+            place.discount = VAL4KEY(obj, @"discount");
+            place.openHours = VAL4KEY(obj, @"openhours");
+            place.logo = VAL4KEY(obj, @"logo");
+            place.logo_big = VAL4KEY(obj, @"logo_big");
+            place.photos = VAL4KEY(obj, @"photos");
             
             CLLocationDegrees lat = [[obj valueForKeyPath:@"location.latitude"] floatValue];
             CLLocationDegrees lon = [[obj valueForKeyPath:@"location.longitude"] floatValue];

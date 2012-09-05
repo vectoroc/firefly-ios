@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *metier;
 @property (nonatomic, strong) NSString  *logo;
+@property (nonatomic, strong) NSString  *logo_big;
 @property (nonatomic, strong) CLLocation *location;
 @property (nonatomic, strong) NSString *description;
 @property (nonatomic, strong) NSString *phone;
