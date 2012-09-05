@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FFPlaceModel.h"
 
-@interface FFPlaceViewController : UIViewController
+@interface FFPlaceViewController : UITableViewController
 
 @property (strong, nonatomic) FFPlaceModel* place;
 

@@ -14,6 +14,8 @@
 
 #import <CoreLocation/CoreLocation.h>
 
+#import "FFPlaceTableViewCell.h"
+
 @interface FFPlacesListViewController () <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
@@ -66,24 +68,35 @@
     return 1;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FFPlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"objectListCell"];
+    return CGRectGetHeight(cell.frame);
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSLog(@"count:%d", [self.dataSource.places count]);
     return [self.dataSource.places count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"objectListCell"];    
+    FFPlaceTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"objectListCell"];
     FFPlaceModel *object = [self.dataSource.places objectAtIndex:indexPath.row];
     
     cell.textLabel.text = object.title;
+    [cell.textLabel sizeToFit];
 	cell.detailTextLabel.text = object.metier;
+    [cell.detailTextLabel sizeToFit];
     [cell.imageView setImageWithURL:[NSURL URLWithString:object.logo] placeholderImage:cell.imageView.image];
     
     // TODO: do not call it every time / static flag ?
     [[cell.imageView layer] setCornerRadius:4.0f];
+    
+    CLLocationDistance distance = [object.location distanceFromLocation:self.locationManager.location];
+    cell.distLabel.text = [NSString stringWithFormat:@"~%.2fkm", distance / 1000];
+    [cell.distLabel sizeToFit];
 
     return cell;
 }
@@ -160,7 +173,7 @@
            fromLocation:(CLLocation *)oldLocation
 {
     NSLog(@"New location %@", newLocation);
-
+    [[FFDownloadManager sharedInstance] requestPlacesDataWithCategory:self.category andCoordinates:newLocation.coordinate];
 }
 
 -(void)notificationHandler:(NSNotification*)notification
