@@ -9,6 +9,10 @@
 #import "FFPlaceTableViewCell.h"
 
 @implementation FFPlaceTableViewCell
+@synthesize imageView;
+@synthesize textLabel;
+@synthesize detailTextLabel;
+@synthesize distLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
