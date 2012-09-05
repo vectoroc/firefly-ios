@@ -25,7 +25,9 @@
     [self.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
         [this setBackgroundImage:image forState:state];
-    } failure:nil];
-    
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        [[AFNetworkActivityIndicatorManager sharedManager] decrementActivityCount];
+        NSLog(@"Failed button background image downloading: %@", error);
+    }];
 }
 @end
