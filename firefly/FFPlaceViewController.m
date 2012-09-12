@@ -27,18 +27,6 @@
 @end
 
 @implementation FFPlaceViewController
-@synthesize place;
-@synthesize logo;
-@synthesize metierLabel;
-@synthesize descriptionLabel;
-@synthesize addressLabel;
-@synthesize phoneLabel;
-@synthesize openhoursLabel;
-@synthesize websiteLabel;
-@synthesize emailLabel;
-@synthesize discountLabel;
-@synthesize detailsTableView;
-
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -69,8 +57,6 @@
         
     self.descriptionLabel.text = self.place.description;
     [self.descriptionLabel sizeToFit];
-    [self.descriptionLabel.superview sizeToFit];
-    [self.descriptionLabel.superview.superview sizeToFit];
     
     if (!self.place.discount) {
         NSIndexPath *indexPath = [NSIndexPath indexPathForRow:5 inSection:0];
@@ -112,6 +98,7 @@
     [self setEmailLabel:nil];
     [self setDiscountLabel:nil];
     [self setDetailsTableView:nil];
+    [self setPlace:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

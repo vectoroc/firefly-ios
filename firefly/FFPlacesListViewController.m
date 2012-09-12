@@ -26,8 +26,6 @@
 
 @implementation FFPlacesListViewController
 
-//@synthesize myTableView;
-//@synthesize dataSource;
 
 - (void)viewDidLoad
 {
@@ -51,8 +49,13 @@
 {
     [self setDataSource:nil];
     [self setMyTableView:nil];
+    [self setLocationManager:nil];
+    [self setMapView:nil];
+
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

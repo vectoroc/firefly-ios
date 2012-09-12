@@ -28,7 +28,6 @@
 @end
 
 @implementation FFCatalogController
-@synthesize scrollView = _scrollView;
 
 - (void)viewDidLoad
 {
@@ -48,11 +47,14 @@
     [self setScrollView:nil];
     [self setDataSource:nil];
     [self setTerms:nil];
+    [self setIcons:nil];
     [self setParent:0];
     
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
