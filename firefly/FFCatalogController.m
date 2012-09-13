@@ -79,10 +79,10 @@
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setFrame:CGRectMake(iconOffsetX+idx%3*(iconWidth+iconOffsetX), iconOffsetY+(idx/3)*(iconHeight+iconOffsetY), iconWidth, iconHeight)];
         
-        UIImageView *buttonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, iconWidth, 100)];
+        UIImageView *buttonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 0, iconWidth - 10, iconWidth - 10)];
         [buttonImageView setImageWithURL:obj.icon_url placeholderImage:[UIImage imageNamed:@"placeholder"]];
         
-        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 93, iconWidth, 27)];
+        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, iconWidth, 30)];
         buttonLabel.text = obj.name;
         buttonLabel.font = [UIFont systemFontOfSize:12.0f];
         buttonLabel.numberOfLines = 2;

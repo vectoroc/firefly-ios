@@ -43,8 +43,11 @@ NSString * const kFFDownloadManagerNotificationPlacesData = @"firefly.data.place
 -(void)requestCatalogData
 {
     NSURL *url = [[self baseURL] URLByAppendingPathComponent:@"iphone-client/catalog"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    [request addValue:language forHTTPHeaderField:@"Accept-Language"];
+
     [self incrementActivityCount];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         [self decrementActivityCount];
@@ -63,7 +66,10 @@ NSString * const kFFDownloadManagerNotificationPlacesData = @"firefly.data.place
     NSString *pathcompenent = [NSString stringWithFormat:@"iphone-client/list/%d/%f,%f", category, coordinates.latitude, coordinates.longitude];
     
     NSURL *url = [[self baseURL] URLByAppendingPathComponent:pathcompenent];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    [request addValue:language forHTTPHeaderField:@"Accept-Language"];
     
     [self incrementActivityCount];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -77,7 +83,5 @@ NSString * const kFFDownloadManagerNotificationPlacesData = @"firefly.data.place
     NSLog(@"request started: %@", request);
     [operation start];
 }
-
-
 
 @end
