@@ -69,17 +69,26 @@
         [self setTitle:[[self.dataSource category:self.parent] name]];
     }
     
+    float const iconWidth = 100;
+    float const iconHeight = 120;
+    float const iconOffsetX = 5;
+    float const iconOffsetY = 5;
+        
     NSMutableArray *buttons = [NSMutableArray new];
     [self.terms enumerateObjectsUsingBlock:^(FFCatalogCategory *obj, NSUInteger idx, BOOL *stop) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setFrame:CGRectMake(idx%3*100+20, idx/3*100+10, 80, 100)];
+        [button setFrame:CGRectMake(iconOffsetX+idx%3*(iconWidth+iconOffsetX), iconOffsetY+(idx/3)*(iconHeight+iconOffsetY), iconWidth, iconHeight)];
         
-        UIImageView *buttonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
+        UIImageView *buttonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, iconWidth, 100)];
         [buttonImageView setImageWithURL:obj.icon_url placeholderImage:[UIImage imageNamed:@"placeholder"]];
         
-        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, 80, 20)];
+        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 93, iconWidth, 27)];
         buttonLabel.text = obj.name;
-        buttonLabel.font = button.titleLabel.font;
+        buttonLabel.font = [UIFont systemFontOfSize:12.0f];
+        buttonLabel.numberOfLines = 2;
+        buttonLabel.lineBreakMode = UILineBreakModeWordWrap;
+        buttonLabel.backgroundColor = [UIColor clearColor];
+        buttonLabel.textAlignment = UITextAlignmentCenter;
         
         [button addSubview:buttonImageView];
         [button addSubview:buttonLabel];
@@ -99,7 +108,9 @@
         [buttons addObject:button];
     }];
     
-    self.scrollView.contentSize = CGSizeMake(100 * 3 + 20, 100 * [self.terms count]/3 + 20);
+    self.scrollView.contentSize = CGSizeMake(iconWidth * 3 + iconOffsetX * 4,
+                                             (iconHeight + iconOffsetY) * ceil([self.terms count]/3.0f) + iconOffsetY);
+    
     self.icons = buttons;
 }
 
