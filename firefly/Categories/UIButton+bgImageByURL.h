@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIButton (bgImageByURL)
+-(void)setImageWithURL:(NSURL *)url forState:(UIControlState)state;
 -(void)setBackgroundImageWithURL:(NSURL *)url forState:(UIControlState)state;
 @end

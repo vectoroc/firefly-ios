@@ -72,22 +72,30 @@
     NSMutableArray *buttons = [NSMutableArray new];
     [self.terms enumerateObjectsUsingBlock:^(FFCatalogCategory *obj, NSUInteger idx, BOOL *stop) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setFrame:CGRectMake(idx%3*100+20, idx/3*100+10, 80, 100)];
         
-        button.titleLabel.font = [UIFont boldSystemFontOfSize:14.0f];
-        button.titleLabel.lineBreakMode = UILineBreakModeTailTruncation;
-        button.titleLabel.numberOfLines = 3;
-        button.titleLabel.textAlignment = UITextAlignmentCenter;
-        //        [button setTitleColor:[UIColor colorWithRed:1 green:113 blue:175 alpha:1] forState:UIControlStateNormal];
-        //        [button setTitle:obj.name forState:UIControlStateNormal];
+        UIImageView *buttonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
+        [buttonImageView setImageWithURL:obj.icon_url placeholderImage:[UIImage imageNamed:@"placeholder"]];
         
-        [button setBackgroundImage:[UIImage imageNamed:@"placeholder"]  forState:UIControlStateNormal];
-        [button setBackgroundImageWithURL:obj.icon_url forState:UIControlStateNormal];
+        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 80, 80, 20)];
+        buttonLabel.text = obj.name;
+        buttonLabel.font = button.titleLabel.font;
         
+        [button addSubview:buttonImageView];
+        [button addSubview:buttonLabel];
+        
+//        [button setImage:[UIImage imageNamed:@"placeholder"]  forState:UIControlStateNormal];
+//        [button setImageWithURL:obj.icon_url forState:UIControlStateNormal];
+//        [button setTitleColor:[UIColor colorWithRed:1 green:113 blue:175 alpha:1] forState:UIControlStateNormal];
+//        [button setTitle:obj.name forState:UIControlStateNormal];
+//        CGSize size = [[button titleForState:UIControlStateNormal] sizeWithFont:button.titleLabel.font];
+//        [button setImageEdgeInsets:UIEdgeInsetsMake(0, 0, size.height, 0)];
+//        [button setTitleEdgeInsets:UIEdgeInsetsMake(0, -20, -20, 0)];
+                        
         [button addTarget:self action:@selector(categoryIconTouchUpInside:) forControlEvents:UIControlEventTouchUpInside];
         
-        button.frame = CGRectMake(idx%3*100+20, idx/3*100+20, 80, 80);
         [self.scrollView addSubview:button];
-        
+
         [buttons addObject:button];
     }];
     
