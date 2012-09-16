@@ -212,16 +212,17 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="qnS-6f-H8f" imageView="A9g-Ak-NeO" style="IBUITableViewCellStyleDefault" id="5lL-3I-Oyc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="qnS-6f-H8f" imageView="A9g-Ak-NeO" style="IBUITableViewCellStyleDefault" id="5lL-3I-Oyc">
                                         <rect key="frame" x="0.0" y="233" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="web-site" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qnS-6f-H8f">
-                                                    <rect key="frame" x="44" y="0.0" width="246" height="43"/>
+                                                    <rect key="frame" x="44" y="0.0" width="226" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <gestureRecognizers/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -233,16 +234,19 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="enU-gM-cB3" id="foG-P8-ctH"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ctK-Xv-i3h" imageView="YtZ-Xx-zVE" style="IBUITableViewCellStyleDefault" id="JYJ-Nm-xTc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ctK-Xv-i3h" imageView="YtZ-Xx-zVE" style="IBUITableViewCellStyleDefault" id="JYJ-Nm-xTc">
                                         <rect key="frame" x="0.0" y="277" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ctK-Xv-i3h">
-                                                    <rect key="frame" x="44" y="0.0" width="246" height="43"/>
+                                                    <rect key="frame" x="44" y="0.0" width="226" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -278,15 +282,15 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="i8a-93-azW" imageView="b3V-UT-eO5" style="IBUITableViewCellStyleDefault" id="htQ-eB-GD4">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="i8a-93-azW" imageView="b3V-UT-eO5" style="IBUITableViewCellStyleDefault" id="htQ-eB-GD4">
                                         <rect key="frame" x="0.0" y="365" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="i8a-93-azW">
-                                                    <rect key="frame" x="41" y="0.0" width="249" height="43"/>
+                                                    <rect key="frame" x="41" y="0.0" width="229" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -337,18 +341,16 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="rcz-Wm-qlo"/>
                     <connections>
-                        <outlet property="addressLabel" destination="AQB-Dn-4BX" id="3xc-g8-wAo"/>
                         <outlet property="descriptionLabel" destination="08M-rr-kvf" id="Hp1-3G-JoY"/>
-                        <outlet property="detailsTableView" destination="ZiL-8g-PgW" id="F6b-Tx-aMa"/>
-                        <outlet property="discountLabel" destination="ruI-EY-K8n" id="USx-It-Pwd"/>
-                        <outlet property="emailLabel" destination="ctK-Xv-i3h" id="Tfb-gg-Qlv"/>
                         <outlet property="logo" destination="dlj-tF-MXH" id="oPY-zG-bN8"/>
                         <outlet property="metierLabel" destination="HZ7-Gu-3S2" id="u4r-rR-cba"/>
-                        <outlet property="openhoursLabel" destination="GNf-d1-7nG" id="7Ll-zj-DdI"/>
-                        <outlet property="phoneLabel" destination="WPz-fC-hME" id="kyT-kB-rlK"/>
-                        <outlet property="websiteLabel" destination="qnS-6f-H8f" id="BfC-O2-Jzi"/>
                     </connections>
                 </tableViewController>
+                <tapGestureRecognizer id="enU-gM-cB3">
+                    <connections>
+                        <action selector="siteTapped:" destination="N4U-XK-h0Q" id="j9n-rF-UKF"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1380" y="327"/>
         </scene>
@@ -458,6 +460,45 @@
         <image name="75-phone.png" width="24" height="24"/>
         <image name="placeholder.png" width="35" height="35"/>
     </resources>
+    <classes>
+        <class className="FFCatalogController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFCatalogController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="FFMapViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFMapViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="FFPlaceTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlaceTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="detailTextLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="distLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="textLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FFPlaceViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlaceViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="logo" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="metierLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="FFPlacesListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlacesListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="selectMap:" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

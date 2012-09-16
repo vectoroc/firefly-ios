@@ -16,17 +16,15 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logo;
 @property (weak, nonatomic) IBOutlet UILabel *metierLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
-@property (weak, nonatomic) IBOutlet UILabel *openhoursLabel;
-@property (weak, nonatomic) IBOutlet UILabel *websiteLabel;
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
-@property (weak, nonatomic) IBOutlet UILabel *discountLabel;
-@property (strong, nonatomic) IBOutlet UITableView *detailsTableView;
+
+@property (strong, nonatomic) NSArray *detailsFields;
+@property (strong, nonatomic) NSIndexSet *detailsFieldsIndexSet;
 
 @end
 
-@implementation FFPlaceViewController
+@implementation FFPlaceViewController {
+    NSUInteger *_detailFieldsRows;
+}
 
 -(id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -39,51 +37,42 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    NSLog(@"Details->viewDidLoad");
     
-}
-
--(void)viewWillAppear:(BOOL)animated
-{
+    // ordered list of fields in section 0 
+    self.detailsFields = @[
+        @"address",
+        @"phone",
+        @"openHours",
+        @"site",
+        @"email",
+        @"discount",
+        @"photos"
+    ];
+            
+    self.detailsFieldsIndexSet = [self.detailsFields indexesOfObjectsPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        id objVal = [self.place valueForKey:obj];
+        NSUInteger counter = 0;
+        if ([objVal respondsToSelector:@selector(count)]) {
+            counter = [objVal count];
+        }
+        if ([objVal respondsToSelector:@selector(length)]) {
+            counter = [objVal length];
+        }
+        return counter > 0;
+    }];
+    
+    self->_detailFieldsRows = malloc(sizeof(NSUInteger) * [self.detailsFieldsIndexSet count]);
+    [self.detailsFieldsIndexSet getIndexes:self->_detailFieldsRows maxCount:[self.detailsFieldsIndexSet count] inIndexRange:nil];
+    
     self.navigationItem.title = self.place.title;
     self.metierLabel.text = self.place.metier;
     
-    self.addressLabel.text = self.place.address;
-    self.phoneLabel.text = self.place.phone;
-    self.openhoursLabel.text = self.place.openHours;
-    self.websiteLabel.text = self.place.site;
-    self.emailLabel.text = self.place.email;
-    self.discountLabel.text = self.place.discount;
-        
     self.descriptionLabel.text = self.place.description;
     [self.descriptionLabel sizeToFit];
-    
-    if (!self.place.discount) {
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:5 inSection:0];
-        [self.detailsTableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-        
-    }
-    
-
-    
-//    NSLog(@"super class %@", NSStringFromClass([self.descriptionLabel.superview class]));
-//    NSLog(@"super super class %@", NSStringFromClass([self.descriptionLabel.superview.superview class]));
-//    UITableViewCell* cell;
-//    UIView *superview = (UIView*)self.superclass;
-//    [superview sizeToFit];
-//    cell.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-//    cell setContentMode:UIViewContent
-//
-//    CGRect rect = self.descriptionLabel.superview.bounds;
-//    rect.size.height = CGRectGetHeight(self.descriptionLabel.bounds);
-//    self.
-//    self.descriptionLabel.superview.bounds = rect;
         
     if (![self.place.logo_big isEqualToString:@""]) {
         [self.logo setImageWithURL:[NSURL URLWithString:self.place.logo_big] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     }
-
-    [super viewWillAppear:animated];
 }
 
 - (void)viewDidUnload
@@ -91,16 +80,13 @@
     [self setLogo:nil];
     [self setMetierLabel:nil];
     [self setDescriptionLabel:nil];
-    [self setAddressLabel:nil];
-    [self setPhoneLabel:nil];
-    [self setOpenhoursLabel:nil];
-    [self setWebsiteLabel:nil];
-    [self setEmailLabel:nil];
-    [self setDiscountLabel:nil];
-    [self setDetailsTableView:nil];
     [self setPlace:nil];
+    [self setDetailsFields:nil];
+    [self setDetailsFieldsIndexSet:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    
+    free(self->_detailFieldsRows);
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -108,9 +94,40 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - tableview staff
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSLog(@"numberOfRowsInSection");
+    if (section == 0) {
+        return [self.detailsFieldsIndexSet count];
+    }
+    
+    return [super tableView:tableView numberOfRowsInSection:section];
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        NSUInteger row = self->_detailFieldsRows[indexPath.row];
+        
+        UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:indexPath.section]];
+        
+        NSString *key = [self.detailsFields objectAtIndex:row];
+        if (![key isEqualToString:@"photos"]) {
+            cell.textLabel.text = [self.place valueForKey:key];            
+        }
+
+        return cell;
+    }
+    
+    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+}
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 1) {
+        // adjust height of description section
         return CGRectGetHeight(self.descriptionLabel.bounds) + 20;
     }
     else {
@@ -118,7 +135,7 @@
     }
 }
 
-#pragma Segues
+#pragma mark - Segues
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -126,6 +143,10 @@
         FFMapViewController *viewController = (FFMapViewController*)segue.destinationViewController;
         viewController.places = [NSArray arrayWithObject:self.place];
     }
+}
+
+- (IBAction)siteTapped:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.place.site]];
 }
 
 @end
