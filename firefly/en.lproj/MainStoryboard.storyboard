@@ -113,6 +113,16 @@
             </objects>
             <point key="canvasLocation" x="1858" y="327"/>
         </scene>
+        <!--Photo Browser-->
+        <scene sceneID="wIn-tp-XcG">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ODO-Ii-B44" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="h22-Sq-E47" customClass="MWPhotoBrowser" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iGa-DX-CcW"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1858" y="909"/>
+        </scene>
         <!--Place View Controller-->
         <scene sceneID="ZjD-ux-LBb">
             <objects>
@@ -235,7 +245,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="enU-gM-cB3" id="foG-P8-ctH"/>
+                                            <outletCollection property="gestureRecognizers" destination="enU-gM-cB3" id="pmY-ZO-dMx"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ctK-Xv-i3h" imageView="YtZ-Xx-zVE" style="IBUITableViewCellStyleDefault" id="JYJ-Nm-xTc">
@@ -259,6 +269,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="CED-wa-amB" id="Ydi-me-qzE"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ruI-EY-K8n" imageView="Q1q-xQ-ZmA" style="IBUITableViewCellStyleDefault" id="FgI-aQ-rLa">
                                         <rect key="frame" x="0.0" y="321" width="320" height="44"/>
@@ -303,6 +316,9 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <connections>
+                                            <segue destination="h22-Sq-E47" kind="push" identifier="viewPhotos" id="iZ7-z7-QbO"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -349,6 +365,11 @@
                 <tapGestureRecognizer id="enU-gM-cB3">
                     <connections>
                         <action selector="siteTapped:" destination="N4U-XK-h0Q" id="j9n-rF-UKF"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="CED-wa-amB">
+                    <connections>
+                        <action selector="mailTapped:" destination="N4U-XK-h0Q" id="moX-Xw-WAP"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -493,10 +514,12 @@
         <class className="FFPlacesListViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlacesListViewController.h"/>
             <relationships>
-                <relationship kind="action" name="selectMap:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
             </relationships>
+        </class>
+        <class className="MWPhotoBrowser" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MWPhotoBrowser.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -7,11 +7,15 @@
 //
 
 #import <MapKit/MapKit.h>
+#import <MessageUI/MessageUI.h>
+
 #import "FFPlaceViewController.h"
 #import "FFMapViewController.h"
 #import "Libraries/AFNetworking/AFNetworking.h"
+#import "Libraries/MWPhotoBrowser/Classes/MWPhotoBrowser.h"
 
-@interface FFPlaceViewController ()
+
+@interface FFPlaceViewController () <MWPhotoBrowserDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *logo;
 @property (weak, nonatomic) IBOutlet UILabel *metierLabel;
@@ -19,6 +23,8 @@
 
 @property (strong, nonatomic) NSArray *detailsFields;
 @property (strong, nonatomic) NSIndexSet *detailsFieldsIndexSet;
+
+@property (strong, nonatomic) NSArray *photos;
 
 @end
 
@@ -73,6 +79,12 @@
     if (![self.place.logo_big isEqualToString:@""]) {
         [self.logo setImageWithURL:[NSURL URLWithString:self.place.logo_big] placeholderImage:[UIImage imageNamed:@"placeholder"]];
     }
+    
+    NSMutableArray *photos = [NSMutableArray array];
+    [self.place.photos enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        [photos addObject:[MWPhoto photoWithURL:[NSURL URLWithString:obj]]];
+    }];
+    [self setPhotos:photos];
 }
 
 - (void)viewDidUnload
@@ -83,6 +95,7 @@
     [self setPlace:nil];
     [self setDetailsFields:nil];
     [self setDetailsFieldsIndexSet:nil];
+    [self setPhotos:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     
@@ -135,7 +148,7 @@
     }
 }
 
-#pragma mark - Segues
+#pragma mark - Segues and actions
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -143,10 +156,40 @@
         FFMapViewController *viewController = (FFMapViewController*)segue.destinationViewController;
         viewController.places = [NSArray arrayWithObject:self.place];
     }
+    else if ([segue.identifier isEqualToString:@"viewPhotos"]) {
+        MWPhotoBrowser *viewController = (id) segue.destinationViewController;
+        viewController.delegate = self;
+    }
 }
+
 
 - (IBAction)siteTapped:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.place.site]];
+}
+
+- (IBAction)mailTapped:(id)sender {
+    NSString *mail = [NSString stringWithFormat:@"mailto:%@", self.place.email];
+    NSURL *url = [NSURL URLWithString:mail];
+
+    if (![[UIApplication sharedApplication] canOpenURL:url]) {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to send email." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+    }
+    else {
+        [[UIApplication sharedApplication] openURL:url];
+    }
+}
+
+#pragma mark - MWPhotoBrowserDelegate
+
+-(NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
+{
+    return [self.photos count];
+}
+
+-(id<MWPhoto>)photoBrowser:(MWPhotoBrowser *)photoBrowser photoAtIndex:(NSUInteger)index
+{
+    return [self.photos objectAtIndex:index];
 }
 
 @end
