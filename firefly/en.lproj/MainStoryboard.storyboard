@@ -113,6 +113,16 @@
             </objects>
             <point key="canvasLocation" x="1858" y="327"/>
         </scene>
+        <!--Mail Compose View Controller-->
+        <scene sceneID="5rc-mN-BYW">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1Ta-DP-sbG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="jLT-Lg-m4b" customClass="FFMFMailComposeViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="MyT-1W-DyW"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1449" y="950"/>
+        </scene>
         <!--Photo Browser-->
         <scene sceneID="wIn-tp-XcG">
             <objects>
@@ -248,15 +258,15 @@
                                             <outletCollection property="gestureRecognizers" destination="enU-gM-cB3" id="pmY-ZO-dMx"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ctK-Xv-i3h" imageView="YtZ-Xx-zVE" style="IBUITableViewCellStyleDefault" id="JYJ-Nm-xTc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ctK-Xv-i3h" imageView="YtZ-Xx-zVE" style="IBUITableViewCellStyleDefault" id="JYJ-Nm-xTc">
                                         <rect key="frame" x="0.0" y="277" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ctK-Xv-i3h">
-                                                    <rect key="frame" x="44" y="0.0" width="226" height="43"/>
+                                                    <rect key="frame" x="44" y="0.0" width="246" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -270,7 +280,7 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="CED-wa-amB" id="Ydi-me-qzE"/>
+                                            <segue destination="jLT-Lg-m4b" kind="modal" identifier="sendMail" id="x8w-yB-9EZ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="ruI-EY-K8n" imageView="Q1q-xQ-ZmA" style="IBUITableViewCellStyleDefault" id="FgI-aQ-rLa">
@@ -365,11 +375,6 @@
                 <tapGestureRecognizer id="enU-gM-cB3">
                     <connections>
                         <action selector="siteTapped:" destination="N4U-XK-h0Q" id="j9n-rF-UKF"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="CED-wa-amB">
-                    <connections>
-                        <action selector="mailTapped:" destination="N4U-XK-h0Q" id="moX-Xw-WAP"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -481,47 +486,6 @@
         <image name="75-phone.png" width="24" height="24"/>
         <image name="placeholder.png" width="35" height="35"/>
     </resources>
-    <classes>
-        <class className="FFCatalogController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFCatalogController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="FFMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="FFPlaceTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlaceTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="detailTextLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="distLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="textLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FFPlaceViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlaceViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="logo" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="metierLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FFPlacesListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlacesListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MWPhotoBrowser" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MWPhotoBrowser.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

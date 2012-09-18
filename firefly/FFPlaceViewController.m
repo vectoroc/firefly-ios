@@ -15,7 +15,7 @@
 #import "Libraries/MWPhotoBrowser/Classes/MWPhotoBrowser.h"
 
 
-@interface FFPlaceViewController () <MWPhotoBrowserDelegate>
+@interface FFPlaceViewController () <MWPhotoBrowserDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *logo;
 @property (weak, nonatomic) IBOutlet UILabel *metierLabel;
@@ -158,29 +158,31 @@
     }
     else if ([segue.identifier isEqualToString:@"viewPhotos"]) {
         MWPhotoBrowser *viewController = (id) segue.destinationViewController;
+        viewController.displayActionButton = YES;
         viewController.delegate = self;
     }
+    else if ([segue.identifier isEqualToString:@"sendMail"]) {
+        MFMailComposeViewController *mail = (id) segue.destinationViewController;
+        mail.mailComposeDelegate = self;
+        if ([MFMailComposeViewController canSendMail]) {
+            [mail setSubject:self.place.title];
+            [mail setToRecipients:[NSArray arrayWithObject:self.place.email]];
+        }
+        else {
+            NSLog(@"MFMailComposeViewController can't send mail!");
+        }
+    }
 }
-
 
 - (IBAction)siteTapped:(id)sender {
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.place.site]];
 }
 
-- (IBAction)mailTapped:(id)sender {
-    NSString *mail = [NSString stringWithFormat:@"mailto:%@", self.place.email];
-    NSURL *url = [NSURL URLWithString:mail];
-
-    if (![[UIApplication sharedApplication] canOpenURL:url]) {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unable to send email." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-    }
-    else {
-        [[UIApplication sharedApplication] openURL:url];
-    }
-}
-
 #pragma mark - MWPhotoBrowserDelegate
+
+// MWPhotoBrowser alternativies:
+// https://github.com/enormego/PhotoViewer
+// https://github.com/nicklockwood/iCarousel
 
 -(NSUInteger)numberOfPhotosInPhotoBrowser:(MWPhotoBrowser *)photoBrowser
 {
@@ -192,4 +194,26 @@
     return [self.photos objectAtIndex:index];
 }
 
+#pragma mark - MFMailComposeViewControllerDelegate
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{    
+    [controller dismissModalViewControllerAnimated:YES];
+    NSLog(@"mailComposer - result: %u / error: %@", result, error);
+}
+
+
+@end
+
+
+
+// override MFMailComposeViewController to make it possible to initialize it from storyboard's segue
+@interface FFMFMailComposeViewController : MFMailComposeViewController
+@end
+
+@implementation FFMFMailComposeViewController
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    return [super init];
+}
 @end
