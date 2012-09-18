@@ -9,6 +9,7 @@
 #import "FFDownloadManager.h"
 #import "FFPlacesListViewController.h"
 #import "FFPlaceViewController.h"
+#import "FFMapViewController.h"
 #import "Libraries/AFNetworking/AFNetworking.h"
 #import "Libraries/AFNetworking/UIImageView+AFNetworking.h"
 
@@ -158,14 +159,10 @@
 - (IBAction)selectMap:(UISegmentedControl*)sender {
     NSLog(@"selected segment %d", sender.selectedSegmentIndex);
     if (sender.selectedSegmentIndex == 1) {
-//        [self->_deletedRows addObject:[NSNumber numberWithInt:2]];
-//        [self->_deletedRows addObject:[NSNumber numberWithInt:4]];
-        
-        NSArray *paths = [NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], [NSIndexPath indexPathForRow:4 inSection:0], nil];
-
-        [self.myTableView deleteRowsAtIndexPaths:paths withRowAnimation:UITableViewRowAnimationAutomatic];
-    }
-    else {
+        FFMapViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"placesListMap"];
+        controller.places = self.dataSource.places;
+        controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+        [self presentViewController:controller animated:YES completion:nil];
     }
 }
 

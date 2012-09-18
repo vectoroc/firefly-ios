@@ -60,13 +60,13 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="kbS-Lr-kKH" id="lpo-dZ-qzB"/>
-                            <outlet property="delegate" destination="kbS-Lr-kKH" id="F37-Ac-rfF"/>
+                            <outlet property="dataSource" destination="kbS-Lr-kKH" id="VNp-t7-iyz"/>
+                            <outlet property="delegate" destination="kbS-Lr-kKH" id="jgd-AQ-6fr"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="xY4-86-gcz">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="e3s-PN-RkP">
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="e3s-PN-RkP">
                             <rect key="frame" x="96" y="7" width="128" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
@@ -81,6 +81,7 @@
                     <connections>
                         <outlet property="myTableView" destination="mwK-lN-54z" id="GeX-LK-fmR"/>
                         <outlet property="tableView" destination="mwK-lN-54z" id="I77-T4-bwZ"/>
+                        <segue destination="kbW-rD-A7S" kind="custom" id="yfw-TP-0Bv"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -92,11 +93,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5q-6a-8UC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="PJW-h7-fsp" customClass="FFMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dCM-bK-TKa">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="73O-Rs-9aL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="PJW-h7-fsp" id="nMN-Uy-m4T"/>
@@ -139,7 +140,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVJ-X9-dwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="N4U-XK-h0Q" customClass="FFPlaceViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ZiL-8g-PgW">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="gdW-Ai-3Sw">
@@ -418,7 +419,7 @@
         <scene sceneID="ae0-UJ-naY">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kem-bM-voR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="kbW-rD-A7S" customClass="FFMapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="placesListMap" id="kbW-rD-A7S" customClass="FFMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jD6-BX-slB">
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -436,6 +437,8 @@
                     <navigationItem key="navigationItem" id="FIY-am-44r"/>
                     <connections>
                         <outlet property="mapView" destination="UHh-Wf-ryL" id="V3L-Iq-A76"/>
+                        <segue destination="kbS-Lr-kKH" kind="custom" id="A1p-sI-QvB"/>
+                        <segue destination="N4U-XK-h0Q" kind="push" identifier="placeViewDetails" id="5DL-Bc-GdW"/>
                     </connections>
                 </viewController>
             </objects>
@@ -523,7 +526,6 @@
         <class className="FFPlaceViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlaceViewController.h"/>
             <relationships>
-                <relationship kind="action" name="siteTapped:"/>
                 <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="logo" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="metierLabel" candidateClass="UILabel"/>
@@ -551,4 +553,8 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="5DL-Bc-GdW"/>
+        <segue reference="A1p-sI-QvB"/>
+    </inferredMetricsTieBreakers>
 </document>
