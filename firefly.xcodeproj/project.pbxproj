@@ -50,6 +50,7 @@
 		455339B81607AE960010295D /* UIButton+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 4553399E1607AE960010295D /* UIButton+WebCache.m */; };
 		455339B91607AE960010295D /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 455339A01607AE960010295D /* UIImageView+WebCache.m */; };
 		455339BA1607AE960010295D /* MWPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 455339A21607AE960010295D /* MWPhotoBrowser.bundle */; };
+		455339D0160914A80010295D /* FFCatalogButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 455339CF160914A70010295D /* FFCatalogButton.m */; };
 		4560466315E82787003AB3F4 /* FFPlacesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560466215E82787003AB3F4 /* FFPlacesListViewController.m */; };
 		4560467F15E83019003AB3F4 /* FFPlacesListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560467E15E83019003AB3F4 /* FFPlacesListModel.m */; };
 		4560468215E83025003AB3F4 /* FFPlaceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4560468115E83025003AB3F4 /* FFPlaceModel.m */; };
@@ -163,6 +164,8 @@
 		455339A11607AE960010295D /* MWPhotoBrowser-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MWPhotoBrowser-Prefix.pch"; sourceTree = "<group>"; };
 		455339A21607AE960010295D /* MWPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MWPhotoBrowser.bundle; sourceTree = "<group>"; };
 		455339A31607AE960010295D /* MWPhotoBrowser.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = MWPhotoBrowser.xcodeproj; sourceTree = "<group>"; };
+		455339CE160914A70010295D /* FFCatalogButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFCatalogButton.h; sourceTree = "<group>"; };
+		455339CF160914A70010295D /* FFCatalogButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFCatalogButton.m; sourceTree = "<group>"; };
 		4560466115E82787003AB3F4 /* FFPlacesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPlacesListViewController.h; sourceTree = "<group>"; };
 		4560466215E82787003AB3F4 /* FFPlacesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFPlacesListViewController.m; sourceTree = "<group>"; };
 		4560467D15E83019003AB3F4 /* FFPlacesListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFPlacesListModel.h; sourceTree = "<group>"; };
@@ -456,6 +459,8 @@
 				4574AED215F538C0005AD9CD /* FFCatalogModel.m */,
 				4574AEC215F40646005AD9CD /* FFCatalogController.h */,
 				4574AEC315F40646005AD9CD /* FFCatalogController.m */,
+				455339CE160914A70010295D /* FFCatalogButton.h */,
+				455339CF160914A70010295D /* FFCatalogButton.m */,
 				458DEE9E15F273370004CABD /* FFMapViewController.h */,
 				458DEE9F15F273370004CABD /* FFMapViewController.m */,
 				4560466115E82787003AB3F4 /* FFPlacesListViewController.h */,
@@ -632,6 +637,7 @@
 				455339B71607AE960010295D /* SDWebImagePrefetcher.m in Sources */,
 				455339B81607AE960010295D /* UIButton+WebCache.m in Sources */,
 				455339B91607AE960010295D /* UIImageView+WebCache.m in Sources */,
+				455339D0160914A80010295D /* FFCatalogButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
