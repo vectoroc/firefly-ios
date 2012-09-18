@@ -178,6 +178,17 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.place.site]];
 }
 
+- (IBAction)phoneTapped:(id)sender {
+    NSMutableString *phone = [self.place.phone mutableCopy];
+//    [phone replaceOccurrencesOfString:@"(" withString:@"" options:0 range:NSMakeRange(0, phone.length)];
+//    [phone replaceOccurrencesOfString:@")" withString:@"" options:0 range:NSMakeRange(0, phone.length)];
+//    [phone replaceOccurrencesOfString:@" " withString:@"" options:0 range:NSMakeRange(0, phone.length)];
+//    [phone replaceOccurrencesOfString:@"-" withString:@"" options:0 range:NSMakeRange(0, phone.length)];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phone]];
+    NSLog(@"call phone: %@", phone);
+}
+
 #pragma mark - MWPhotoBrowserDelegate
 
 // MWPhotoBrowser alternativies:
