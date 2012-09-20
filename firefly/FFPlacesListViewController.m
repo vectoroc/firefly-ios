@@ -20,7 +20,6 @@
 @interface FFPlacesListViewController () <CLLocationManagerDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *myTableView;
-@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager* locationManager;
 
 @end
@@ -51,7 +50,6 @@
     [self setDataSource:nil];
     [self setMyTableView:nil];
     [self setLocationManager:nil];
-    [self setMapView:nil];
 
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -154,15 +152,9 @@
         FFPlaceModel *place = [self.dataSource.places objectAtIndex:index.row];
         [[segue destinationViewController] setPlace:place];
     }
-}
-
-- (IBAction)selectMap:(UISegmentedControl*)sender {
-    NSLog(@"selected segment %d", sender.selectedSegmentIndex);
-    if (sender.selectedSegmentIndex == 1) {
-        FFMapViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"placesListMap"];
+    else if ([@"placesOnMap" isEqualToString:segue.identifier]) {
+        FFMapViewController *controller = segue.destinationViewController;
         controller.places = self.dataSource.places;
-        controller.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-        [self presentViewController:controller animated:YES completion:nil];
     }
 }
 

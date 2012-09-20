@@ -66,22 +66,15 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="xY4-86-gcz">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="e3s-PN-RkP">
-                            <rect key="frame" x="96" y="7" width="128" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="List"/>
-                                <segment title="Map"/>
-                            </segments>
+                        <barButtonItem key="rightBarButtonItem" title="Map" id="2Zu-qt-lWs">
                             <connections>
-                                <action selector="selectMap:" destination="kbS-Lr-kKH" eventType="valueChanged" id="kI3-m4-dJW"/>
+                                <segue destination="kbW-rD-A7S" kind="push" identifier="placesOnMap" id="k9q-uu-eCV"/>
                             </connections>
-                        </segmentedControl>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="myTableView" destination="mwK-lN-54z" id="GeX-LK-fmR"/>
                         <outlet property="tableView" destination="mwK-lN-54z" id="I77-T4-bwZ"/>
-                        <segue destination="kbW-rD-A7S" kind="custom" id="yfw-TP-0Bv"/>
                     </connections>
                 </tableViewController>
             </objects>
@@ -93,11 +86,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m5q-6a-8UC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="PJW-h7-fsp" customClass="FFMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dCM-bK-TKa">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="73O-Rs-9aL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="PJW-h7-fsp" id="nMN-Uy-m4T"/>
@@ -140,7 +133,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZVJ-X9-dwS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="N4U-XK-h0Q" customClass="FFPlaceViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="ZiL-8g-PgW">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="gdW-Ai-3Sw">
@@ -421,11 +414,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kem-bM-voR" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="placesListMap" id="kbW-rD-A7S" customClass="FFMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jD6-BX-slB">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" id="UHh-Wf-ryL">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <connections>
                                     <outlet property="delegate" destination="kbW-rD-A7S" id="wF5-sQ-Ghb"/>
@@ -437,7 +430,6 @@
                     <navigationItem key="navigationItem" id="FIY-am-44r"/>
                     <connections>
                         <outlet property="mapView" destination="UHh-Wf-ryL" id="V3L-Iq-A76"/>
-                        <segue destination="kbS-Lr-kKH" kind="custom" id="A1p-sI-QvB"/>
                         <segue destination="N4U-XK-h0Q" kind="push" identifier="placeViewDetails" id="5DL-Bc-GdW"/>
                     </connections>
                 </viewController>
@@ -498,63 +490,12 @@
         <image name="75-phone.png" width="24" height="24"/>
         <image name="placeholder.png" width="35" height="35"/>
     </resources>
-    <classes>
-        <class className="FFCatalogController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFCatalogController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-            </relationships>
-        </class>
-        <class className="FFMFMailComposeViewController" superclassName="MFMailComposeViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFMFMailComposeViewController.h"/>
-        </class>
-        <class className="FFMapViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFMapViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="FFPlaceTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlaceTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="detailTextLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="distLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="textLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FFPlaceViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlaceViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="descriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="logo" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="metierLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="FFPlacesListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/FFPlacesListViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="myTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="MFMailComposeViewController" superclassName="UINavigationController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MFMailComposeViewController.h"/>
-        </class>
-        <class className="MWPhotoBrowser" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MWPhotoBrowser.h"/>
-            <relationships>
-                <relationship kind="outlet" name="delegate"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5DL-Bc-GdW"/>
-        <segue reference="A1p-sI-QvB"/>
+        <segue reference="ryT-Ns-0lV"/>
     </inferredMetricsTieBreakers>
 </document>
