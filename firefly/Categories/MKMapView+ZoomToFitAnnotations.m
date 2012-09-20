@@ -11,6 +11,10 @@
 @implementation MKMapView (ZoomToFitAnnotations)
 
 - (void)zoomToFitMapAnnotations {
+    [self zoomToFitMapAnnotations:NO];
+}
+
+- (void)zoomToFitMapAnnotations:(BOOL)includeUserLocation {    
     if ([self.annotations count] == 0) return;
     
     CLLocationCoordinate2D topLeftCoord;
@@ -26,6 +30,13 @@
         topLeftCoord.latitude = fmax(topLeftCoord.latitude, annotation.coordinate.latitude);
         bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, annotation.coordinate.longitude);
         bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, annotation.coordinate.latitude);
+    }
+    
+    if (self.userLocation && includeUserLocation) {
+        topLeftCoord.longitude = fmin(topLeftCoord.longitude, self.userLocation.coordinate.longitude);
+        topLeftCoord.latitude = fmax(topLeftCoord.latitude, self.userLocation.coordinate.latitude);
+        bottomRightCoord.longitude = fmax(bottomRightCoord.longitude, self.userLocation.coordinate.longitude);
+        bottomRightCoord.latitude = fmin(bottomRightCoord.latitude, self.userLocation.coordinate.latitude);
     }
     
     MKCoordinateRegion region;

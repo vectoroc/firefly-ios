@@ -10,4 +10,5 @@
 
 @interface MKMapView (ZoomToFitAnnotations)
 - (void)zoomToFitMapAnnotations;
+- (void)zoomToFitMapAnnotations:(BOOL)inclueUserLocation;
 @end
