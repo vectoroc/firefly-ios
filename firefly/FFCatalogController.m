@@ -84,26 +84,24 @@
         button.iconHeight = iconHeight;
         button.iconWidth = iconWidth;
         
-//        [button setFrame:CGRectMake(iconOffsetX+idx%3*(iconWidth+iconOffsetX), iconOffsetY+(idx/3)*(iconHeight+iconOffsetY), iconWidth, iconHeight)];
+        UIImageView *buttonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 0, iconWidth - 10, iconWidth - 10)];
+        [buttonImageView setImageWithURL:obj.icon_url placeholderImage:[UIImage imageNamed:@"placeholder"]];
         
-//        UIImageView *buttonImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 0, iconWidth - 10, iconWidth - 10)];
-//        [buttonImageView setImageWithURL:obj.icon_url placeholderImage:[UIImage imageNamed:@"placeholder"]];
-//        
-//        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, iconWidth, 30)];
-//        buttonLabel.text = obj.name;
-//        buttonLabel.font = [UIFont systemFontOfSize:12.0f];
-//        buttonLabel.numberOfLines = 2;
-//        buttonLabel.lineBreakMode = UILineBreakModeWordWrap;
-//        buttonLabel.backgroundColor = [UIColor clearColor];
-//        buttonLabel.textAlignment = UITextAlignmentCenter;
-//        
-//        [button addSubview:buttonImageView];
-//        [button addSubview:buttonLabel];
+        UILabel *buttonLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, iconWidth, 30)];
+        buttonLabel.text = obj.name;
+        buttonLabel.font = [UIFont systemFontOfSize:12.0f];
+        buttonLabel.numberOfLines = 2;
+        buttonLabel.lineBreakMode = UILineBreakModeWordWrap;
+        buttonLabel.backgroundColor = [UIColor clearColor];
+        buttonLabel.textAlignment = UITextAlignmentCenter;
         
-        [button setImage:[UIImage imageNamed:@"placeholder"]  forState:UIControlStateNormal];
-        [button setImageWithURL:obj.icon_url forState:UIControlStateNormal];
+        [button addSubview:buttonImageView];
+        [button addSubview:buttonLabel];
+        
+//        [button setImage:[UIImage imageNamed:@"placeholder"]  forState:UIControlStateNormal];
+//        [button setImageWithURL:obj.icon_url forState:UIControlStateNormal];
 //        [button setTitleColor:[UIColor colorWithRed:1 green:113 blue:175 alpha:1] forState:UIControlStateNormal];
-        [button setTitle:obj.name forState:UIControlStateNormal];
+//        [button setTitle:obj.name forState:UIControlStateNormal];
 //        CGSize size = [[button titleForState:UIControlStateNormal] sizeWithFont:button.titleLabel.font];
 //        [button setImageEdgeInsets:UIEdgeInsetsMake(0, 0, size.height, 0)];
 //        [button setTitleEdgeInsets:UIEdgeInsetsMake(0, -20, -20, 0)];

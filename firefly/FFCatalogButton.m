@@ -8,6 +8,11 @@
 
 #import "FFCatalogButton.h"
 
+//@interface FFCatalogButton ()
+//@property (weak, nonatomic) UILabel *iconTitleLabel;
+//@property (weak, nonatomic) UIImageView *iconImageView;
+//@end
+
 @implementation FFCatalogButton
 
 - (id)initWithFrame:(CGRect)frame
@@ -28,11 +33,11 @@
 }
 */
 
--(void)layoutSubviews
-{
-    self.imageView.frame = CGRectMake(5, 0, self.iconWidth - 10, self.iconWidth - 10);
-    self.titleLabel.frame = CGRectMake(0, 90, self.iconWidth, 30);
-}
+//-(void)layoutSubviews
+//{
+//    self.imageView.frame = CGRectMake(5, 0, self.iconWidth - 10, self.iconWidth - 10);
+//    self.titleLabel.frame = CGRectMake(0, 90, self.iconWidth, 30);
+//}
 
 
 @end
