@@ -47,7 +47,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [self.mapView zoomToFitMapAnnotations];
+    [self.mapView zoomToFitMapAnnotations:YES];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -64,8 +64,13 @@
         MKAnnotationView* view = [mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
         if (!view) {
             view = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
-            UIButton *annotationButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-            view.rightCalloutAccessoryView = annotationButton;
+            
+            id prevController = [self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count] - 2];
+            
+            if (![prevController isMemberOfClass:[FFPlaceViewController class]]) {
+                UIButton *annotationButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+                view.rightCalloutAccessoryView = annotationButton;
+            }
         }
         view.canShowCallout = YES;
         return view;
